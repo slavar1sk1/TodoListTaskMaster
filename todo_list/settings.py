@@ -38,11 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'tasks',
     'subscriptions',
-    'bronze',
-    'silver',
-    'gold',
 ]
 
 MIDDLEWARE = [
