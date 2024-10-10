@@ -1,0 +1,33 @@
+<ul id="taskList">
+            {% for task in tasks %}
+            <li class="task_form" data-id="{{ task.id }}">
+                <p class="task-text">{{ task.task }}</p>
+                <div class="mt-3">
+                  <button hx-post="/update/{{ task.id }}/"
+                  hx-confirm="Do you want to complete the task?"
+                  hx-target="#taskList"
+                  hx-swap="outerHTML"
+                  hx-on="htmx:afterRequest: htmx.process(document.body)"
+                  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                  class="btn btn-success me-2">Completed</button>
+
+                  <button hx-post="/delete/{{ task.id }}/"
+                  hx-target="#taskList"
+                  hx-swap="outerHTML"
+                  hx-confirm="Do you want to delete the task?"
+                  hx-on="htmx:afterRequest: htmx.process(document.body)"
+                  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                  class="btn btn-danger">Delete</button>
+
+                </div>
+                 <span class="category-label category-{{ task.category }}">
+                {{ task.category }}
+                </span>
+                <h2 class="status">Status :
+                    <span class="{{ task.status|yesno:'done,progress' }}">
+                        {{ task.status|yesno:'Completed,In progress..' }}
+                    </span>
+                </h2>
+            </li>
+            {% endfor %}
+          </ul>

@@ -1,0 +1,598 @@
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: #ecb7b7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 80px;
+  z-index: 1000;
+}
+
+header .logo {
+  height: 150px;
+  margin-left: 25px;
+  margin-top: 5px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  margin-right: 765px;
+  width: 150px;
+}
+
+header nav ul li {
+  margin-top: 30px;
+}
+header nav ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+  animation: fadeIn 1s ease-in-out forwards;
+  margin-bottom: -20px;
+}
+
+header nav ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный серый фон */
+  border-radius: 4px;
+}
+
+.container {
+  display: flex;
+  margin-top: 60px;
+  height: 100%;
+}
+
+aside {
+  background-color: #ecb7b7;
+  padding: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  margin-left: -315px;
+}
+
+.side-button {
+  background-color: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: left;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side-button:hover {
+  background-color: #e04343;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+#category-button {
+    background-color: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: left;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;}
+
+
+#category-button:hover {
+  background-color: #e04343;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.first-btn {
+  margin-top: 50px;
+}
+
+.category-button {
+  background-color: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: left;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-button:hover {
+  background-color: #e04343;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+#category-list {
+  margin-top: 10px;
+
+}
+
+.category {
+  background-color: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: left;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+  background-color: #e04343;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.category .today-icon {
+  margin-right: 8px;
+}
+
+#category-list {
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+#category-list .category {
+  margin: 5px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.f-btn {
+  margin-top: 200px;
+}
+
+.side-button .icon {
+  margin-right: 10px;
+}
+
+main {
+  margin-left: 270px;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+
+main h1 {
+  font-weight: 700;
+  color: #333;
+}
+
+main p {
+  font-weight: 400;
+  color: #666;
+}
+
+.today-icon {
+  height: 30px;
+  margin-right: 20px;
+}
+
+#taskModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#modalContent {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.list-group-item {
+  max-width: 480px;
+  word-wrap: break-word;
+  margin-left: -200px;
+}
+
+.my-4 {
+  text-align: center;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.task_form {
+  background-color: rgba(255, 105, 180, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+.black_line {
+  background-color: black;
+  width: 950px;
+  height: 5px;
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 18.5px;
+}
+
+.progress {
+  font-size: 18px;
+}
+
+/* Основной стиль для модального окна */
+#taskModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стиль для внутреннего содержимого модального окна */
+#modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  animation: modalFadeIn 0.5s ease-out;
+  position: relative;
+}
+
+/* Анимация плавного появления */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Стиль для кнопки закрытия модального окна */
+#closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+#closeModal:hover {
+  color: #e74c3c;
+}
+
+/* Стиль для заголовка */
+#modalContent h2 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+/* Стилизация формы */
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#taskForm input[type="text"],
+#taskForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Серый бордюр */
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* Подсветка поля ввода и текстового поля при фокусе */
+#taskForm input[type="text"]:focus,
+#taskForm textarea:focus {
+  border-color: #e74c3c; /* Красный цвет бордюра при фокусе */
+  outline: none;
+}
+
+/* Стиль для кнопки сохранения задачи */
+#taskForm button {
+  background-color: #e74c3c; /* Красный фон кнопки */
+  color: #fff;
+  padding: 12px;
+  border: 1px solid #ccc; /* Серый бордюр кнопки */
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#taskForm button:hover {
+  background-color: #c0392b; /* Более темный красный при наведении */
+  border-color: #e74c3c; /* Красный бордюр */
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация исчезновения */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.task_form {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+/* Удаление с плавным исчезновением */
+.task_form.removing {
+  animation: fadeOut 0.5s forwards;
+}
+
+.rubies-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -30px;
+  margin-left: 650px;
+  position: relative;
+  padding: 5px 10px; /* Уменьшены отступы */
+  background-color: #f9f9f9;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: fit-content; /* Установлена автоширина */
+}
+
+.ruby-icon {
+  height: 30px; /* Уменьшен размер иконки */
+  animation: fadeIn 1s ease-in-out forwards;
+  margin-right: 8px;
+}
+
+#rubies-count {
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 18px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden {
+    display: none;
+}
+
+.category-label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            text-transform: capitalize;
+            margin-top: 10px;
+        }
+
+.category-sport {
+            background-color: #1E90FF; /* Dodger Blue */
+        }
+
+.category-work {
+            background-color: #32CD32; /* Lime Green */
+        }
+
+.category-study {
+             background-color: #6A0D91;
+        }
+
+.category-leisure {
+            background-color: #000000; /* Black */
+        }
+
+.category-other {
+            background-color: #FFD700; /* Gold */
+        }
+
+#taskList {
+    list-style: none;
+    }
+
+
+.task-text {
+    font-family: 'Poppins', sans-serif;  /* Шрифт Poppins */
+    font-size: 20px;                     /* Размер текста */
+    font-weight: 600;                    /* Полужирный текст */
+    color: #2c3e50;                      /* Цвет текста */
+    word-wrap: break-word;               /* Перенос слов на новую строку */
+    white-space: normal;                 /* Обычный перенос текста */
+}
+
+
+/* Плавное движение li при наведении */
+.task_form {
+    transition: transform 0.3s ease;     /* Плавный переход */
+}
+
+.task_form:hover {
+    transform: translateY(-5px);         /* Легкое движение вверх */
+}
+
+#taskModal {
+  display: none;
+}
+
+/* Анимация появления сверху */
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация появления снизу */
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+/* Применение анимации к заголовкам */
+h1, h2, h3, p {
+  animation: fadeInTop 1s ease forwards;
+}
+
+/* Применение анимации к текстовым полям */
+input[type="text"], textarea {
+  animation: fadeInBottom 1.2s ease forwards;
+}
+
+/* Анимация появления кнопки с увеличением */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Применение анимации к кнопкам */
+button, .side-button {
+  animation: fadeInScale 0.8s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .side-button:hover {
+  transform: translateY(-5px); /* Легкое движение вверх при наведении */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+/* Анимация плавного увеличения и появления */
+@keyframes fadeInScaleSlow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Применение анимации к формам и контейнерам */
+.task_form, .category-button, .rubies-container {
+  animation: fadeInScaleSlow 1s ease forwards;
+}
+
+/* Анимация для элементов списка (задач) */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Применение к элементам списка задач */
+.task-text, .category-label, .list-group-item {
+  animation: fadeInLeft 0.8s ease forwards;
+  opacity: 0; /* Изначально скрыто */
+}

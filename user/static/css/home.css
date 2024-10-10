@@ -1,0 +1,135 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 20px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.header img {
+  height: 150px;
+  margin-left: 90px;
+  margin-top: -15px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.header-right {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center; /* Выравнивание элементов по вертикали */
+  margin-right: 260px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.nav {
+  color: #000000;
+  text-decoration: none;
+  margin-left: 23px;
+  font-size: 18px;
+  padding: 5px 10px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.nav:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный серый фон */
+  border-radius: 4px;
+}
+
+.line {
+  width: 2.9px;
+  height: 45px;
+  background-color: rgb(196, 196, 196);
+  margin: 0 20px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.registration-first {
+  color: white;
+  border-radius: 8px;
+  background: rgb(230, 71, 71);
+  text-decoration: none;
+  margin-left: 23px;
+  font-size: 18px;
+  padding: 5px 10px;
+  font-weight: bold;
+  height: 28px;
+  width: 140px;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin-top: 3px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.registration-first:hover {
+  background-color: rgba(241, 12, 12, 0.9);
+  border-radius: 8px;
+}
+
+.main {
+  margin-top: 100px;
+  text-align: center;
+  align-items: center;
+  height: 200px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.main h1 {
+  font-size: 65px;
+  max-height: 100px;
+  max-width: 650px;
+  text-align: center;
+  align-items: center;
+  margin-left: 525px;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.registration-second {
+  display: inline-block;
+  color: white;
+  border-radius: 10px;
+  background: rgb(230, 71, 71);
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-right: 45px;
+  height: 100px;
+  width: 300px;
+  line-height: 100px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out forwards;
+  margin-top: 45px;
+}
+
+.registration-second:hover {
+  background-color: rgba(241, 12, 12, 0.9);
+  border-radius: 10px;
+}

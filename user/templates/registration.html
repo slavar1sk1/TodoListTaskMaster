@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/registration.css" />
+  </head>
+  <body>
+    <div class="container fadeIn">
+      <h2>Register</h2>
+      <form method="post">
+        {% csrf_token %}
+        <p class="email">{{ form.email.label_tag }} {{ form.email }}</p>
+        <p class="username">
+          {{ form.username.label_tag }} {{ form.username }}
+        </p>
+        <p class="password1">
+          {{ form.password1.label_tag }} {{ form.password1 }}
+        </p>
+        <p class="password2">Password Confirm: {{ form.password2 }}</p>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

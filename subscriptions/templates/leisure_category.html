@@ -1,0 +1,45 @@
+{% extends "base_category.html" %}
+
+{% block title %}
+    Leisure Category
+{% endblock %}
+
+{% block content %}
+    <header>
+        <img
+          src="/static/images/logo-for-todolist-website-with-name--taskmaster--c__1_-removebg-preview.png"
+          alt="logo"
+          class="fade-in logo"
+        />
+        <nav>
+          <ul>
+            <li><a href="/task_list">Home</a></li>
+            <li><a href="#">Tasks</a></li>
+            <li><a href="/buy_subscription">Subscriptions</a></li>
+            <li><a href="/profile">Profile</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <div class="task_list_container">
+        {% for task in leisure_category_tasks %}
+        <div class="task_form">
+            <div class="task_content">
+                <span class="category-label">{{ task.task }}</span>
+            </div>
+            <div class="status">
+                <span class="{{ task.status|yesno:'done,progress' }}">
+                    {{ task.status|yesno:'Completed,In progress..' }}
+                </span>
+            </div>
+        </div>
+        {% empty %}
+        <div class="task_form">
+            <div class="task_content">
+                <span>No tasks in this category.</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

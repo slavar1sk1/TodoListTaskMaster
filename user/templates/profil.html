@@ -1,0 +1,21 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/css/profil.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Profile</h1>
+      <div class="profile-info">
+        <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+        <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
+        <p><strong>Status:</strong> {{ user_profile.get_status_display }}</p>
+      </div>
+      <a href="{% url 'task_list' %}" class="back-button">Back</a>
+    </div>
+  </body>
+</html>

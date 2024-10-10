@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/subscriptions.css" />
+    <title>TaskMaster Subscriptions</title>
+  </head>
+  <body>
+    <header class="fade-in">
+      <div class="header fade-in">
+        <img
+          src="/static/images/logo-for-todolist-website-with-name--taskmaster--c__1_-removebg-preview.png"
+          alt="logo"
+          class="fade-in"
+        />
+
+        <div class="header-right fade-in">
+          <a class="back-button" href="/task_list">Back</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main fade-in">
+      <div class="pricing-header text-center">
+        <h1 class="display-4">Pricing</h1>
+      </div>
+      <div class="pricing-table">
+        <div class="pricing-card">
+          <div class="card-header">
+            <h4>Bronze</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title">0<small> Rubins</small></h1>
+            <ul>
+              <li>Basic Features Todo List</li>
+            </ul>
+            <button class="buy-button">Bought</button>
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="card-header">
+            <h4>Silver</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title">100<small> Rubins</small></h1>
+            <ul>
+              <li>All Bronze Features</li>
+              <li>Divide tasks into categories</li>
+              <li>Interface change</li>
+            </ul>
+            {% if status == 'bronze'%}
+            <button class="buy-button" onclick="location.href='{% url 'buy_silver' %}'">Buy Silver</button>
+            {% else%}
+            <button class="buy-button">Bought</button>
+            {% endif%}
+          </div>
+        </div>
+        <div class="pricing-card">
+          <div class="card-header">
+            <h4>Gold</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title">300<small> Rubins</small></h1>
+            <ul>
+              <li>All Silver Features</li>
+              <li>Task execution statistics</li>
+            </ul>
+            {% if status == 'bronze' or status == 'silver'%}
+            <button class="buy-button" onclick="location.href='{% url 'buy_gold' %}'">Buy Gold</button>
+            {% else%}
+            <button class="buy-button">Bought</button>
+            {% endif%}
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
