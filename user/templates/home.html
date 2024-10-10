@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/static/css/home.css" />
+    <script src="/static/js/home.js" defer></script>
     <title>TaskMaster</title>
   </head>
   <body>
@@ -20,23 +21,20 @@
           alt="logo"
           class="fade-in"
         />
-
         <div class="header-right fade-in">
           <a href="/subscriptions" class="nav fade-in">Subscriptions</a>
           <div class="line fade-in"></div>
           <a href="/login" class="nav fade-in">Log in</a>
-          <a href="/registration" class="registration-first fade-in"
-            >Registration</a
-          >
+          <a href="/registration" class="registration-first fade-in">Registration</a>
         </div>
       </div>
     </header>
 
     <main class="main fade-in">
       <h1 class="fade-in">Organize your work and life</h1>
-      <a href="/registration" class="registration-second fade-in"
-        >Get Started</a
-      >
+      <button onclick="location.href='{% url 'registration' %}'" class="registration-second fade-in">Get Started</button>
     </main>
+
+    <div class="particles"></div>
   </body>
 </html>

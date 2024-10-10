@@ -1,4 +1,3 @@
-<!-- profile.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,6 +13,7 @@
         <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
         <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
         <p><strong>Status:</strong> {{ user_profile.get_status_display }}</p>
+
       </div>
       <a href="{% url 'task_list' %}" class="back-button">Back</a>
     </div>

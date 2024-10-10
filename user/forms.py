@@ -1,7 +1,7 @@
 """Create Forms for Authentication"""
 
 from django import forms
-from .models import User, TaskModel, UserProfile
+from .models import User, TaskModel, UserProfile, Category
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -36,7 +36,14 @@ class RegistrationForm(UserCreationForm):
 class TaskModelForm(forms.ModelForm):
     class Meta:
         model = TaskModel
-        fields = ['task']
+        fields = ['task', 'category']
+        widgets = {
+            'category': forms.Select()
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['category'].choices = TaskModel.CATEGORY_CHOICES
 
     def save(self, commit=True, user=None):
         instance = super().save(commit=False)
