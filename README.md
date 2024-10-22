@@ -38,11 +38,12 @@ Follow these steps to set up the project on your local machine:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-usern
-ame/your-repo-name.git
+   https://github.com/slavar1sk1/TodoListTaskMaster
+
+
 2. **Install the required dependencies: Make sure you have pip installed, and run:**:
 
-    ```bash
+   ```bash
     pip install -r requirements.txt
 A   pply migrations to set up the database:
  
@@ -62,7 +63,7 @@ A   pply migrations to set up the database:
 Django: Web framework for rapid development.
 Django Time: Time and statistics management for tasks.
 Bootstrap: Modern CSS framework for creating responsive and attractive UI.
-🎯 Future Features
+# 🎯 Future Features
 Recurring tasks: Set tasks that repeat daily, weekly, or monthly.
 Notifications: Get reminders for upcoming or overdue tasks.
 Task Sharing: Share tasks with other users for collaboration.
