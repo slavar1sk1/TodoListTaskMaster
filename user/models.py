@@ -1,37 +1,44 @@
-''' Create Model for Users'''
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from django.db.models import Count
 
 
+# Custom User model inheriting from Django's AbstractUser.
 class User(AbstractUser):
-    pass
+    pass  # No additional fields added to the default User model for now.
 
 
+# Model to store profile information for each user.
 class UserProfile(models.Model):
+    # Subscription tiers for users.
     BRONZE = 'bronze'
     SILVER = 'silver'
     GOLD = 'gold'
 
+    # Choices for subscription status.
     STATUS_CHOICES = [
         (BRONZE, 'Bronze'),
         (SILVER, 'Silver'),
         (GOLD, 'Gold'),
     ]
 
+    # User profile is linked to a User object with a one-to-one relationship.
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # User's subscription status (bronze by default).
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=BRONZE)
+    # Tracks the number of completed tasks by the user.
     tasks_completed = models.IntegerField(default=0)
 
+    # Method to count the number of completed tasks.
     def completed_tasks_count(self):
-        print(self.tasks.filter(status=True).count())
         return self.tasks.filter(status=True).count()
 
+    # Method to count the total number of tasks.
     def total_tasks_count(self):
         return self.tasks.count()
 
+    # Method to calculate the percentage of completed tasks.
     def completion_percentage(self):
         total_tasks = self.total_tasks_count()
         completed_tasks = self.completed_tasks_count()
@@ -39,6 +46,7 @@ class UserProfile(models.Model):
             return (completed_tasks / total_tasks) * 100
         return 0
 
+    # Calculates how many consecutive days the user has been active (since last login).
     def consecutive_days_active(self):
         today = timezone.now().date()
         last_active_date = self.user.last_login.date() if self.user.last_login else None
@@ -47,20 +55,21 @@ class UserProfile(models.Model):
             return max(consecutive_days, 0)
         return 0
 
+    # Average time per task (if time tracking is implemented).
     def average_time_per_task(self):
         if self.tasks_completed > 0:
             average_time = self.tasks_completed_time / self.tasks_completed
-            return f"{average_time:.1f} seconds"  # Форматирование времени
+            return f"{average_time:.1f} seconds"
         return "0.0 seconds"
 
+    # Determines which day of the week the user was most active (completed the most tasks).
     def most_active_day_of_week(self):
-        # Получаем все завершенные задачи
         completed_tasks = self.tasks.filter(status=True)
 
         if not completed_tasks.exists():
             return None
 
-        # Группируем задачи по дню недели и считаем количество задач
+        # Annotates tasks with their day of the week and counts how many were completed on each day.
         day_counts = (completed_tasks
                       .annotate(day_of_week=models.functions.ExtractWeekDay('created_at'))
                       .values('day_of_week')
@@ -68,25 +77,21 @@ class UserProfile(models.Model):
                       .order_by('-count'))
 
         if day_counts:
-            # Получаем номер дня недели с максимальным количеством задач
+            # Get the most active day of the week and adjust for Django's weekday numbering.
             max_day = day_counts[0]['day_of_week']
-            # Преобразуем номер дня недели (1 = воскресенье, 7 = суббота) в дату
-            # Поскольку ExtractWeekDay возвращает 1 для воскресенья, а 7 для субботы, нужно скорректировать
-            max_day_corrected = max_day % 7 or 7  # 0 становится 7 для воскресенья
-
-            # Находим текущую дату и получаем номер текущего дня
+            max_day_corrected = max_day % 7 or 7
             today = timezone.now().date()
-            today_day_of_week = today.weekday()  # 0 = понедельник, 6 = воскресенье
-
-            # Находим дату для максимального дня активности
-            days_difference = max_day_corrected - (today_day_of_week + 1)  # +1, чтобы совместить с ExtractWeekDay
+            today_day_of_week = today.weekday()
+            days_difference = max_day_corrected - (today_day_of_week + 1)
 
             return today + timezone.timedelta(days=days_difference)
 
         return None
 
 
+# Model to represent tasks associated with a user profile.
 class TaskModel(models.Model):
+    # Predefined categories for tasks.
     CATEGORY_CHOICES = [
         ('sport', 'Sport'),
         ('work', 'Work'),
@@ -95,15 +100,14 @@ class TaskModel(models.Model):
         ('other', 'Other'),
     ]
 
-    task = models.TextField()
-    status = models.BooleanField(default=False)
-    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)  # Добавлено
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='tasks')
+    task = models.TextField()  # The task's description.
+    status = models.BooleanField(default=False)  # Task completion status (True for completed).
+    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES)  # Task category.
+    created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when task was created.
+    updated_at = models.DateTimeField(auto_now=True)  # Timestamp when task was last updated.
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='tasks')  # Task linked to user profile.
 
 
-
+# Model representing categories (not used in the TaskModel).
 class Category(models.Model):
-
-    category = models.BooleanField(max_length=30)
+    category = models.BooleanField(max_length=30)  # Unclear purpose, likely needs revision.
