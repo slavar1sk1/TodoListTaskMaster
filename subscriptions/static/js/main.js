@@ -29,7 +29,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response.task && response.task.task) {
           const taskHtml = `<li class="task_form" data-id="${response.task.id}">
-                              ${response.task.task}
+                              <p class="task-text">${response.task.task}</p>
                               <div class="mt-3">
                                 <button hx-post="/update/${
                                   response.task.id
@@ -65,21 +65,21 @@ $(document).ready(function () {
     htmx.process(document.body);
   });
 
-  $(document).on("click", ".btn-success", function (event) {
+  $(document).on("click", ".btn-complete", function (event) {
     event.preventDefault();
     let button = $(this);
-    let url = button.attr("hx-post");
+    let url = button.data('url')
 
     $.ajax({
       type: "POST",
       url: url,
+      dataType: 'json',
       headers: {
         "X-CSRFToken": csrfToken,
       },
       success: function (response) {
-        let [tasksHtml, rubiesHtml] = response.split("||");
-        $("#taskList").html(tasksHtml);
-        $("#rubies-count").replaceWith(rubiesHtml);
+        $("#taskList").html(response);
+
         htmx.process(document.body);
       },
     });

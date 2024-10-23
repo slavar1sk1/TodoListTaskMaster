@@ -52,7 +52,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-  background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный серый фон */
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
 
@@ -286,7 +286,6 @@ main p {
   align-items: center;
 }
 
-/* Стиль для внутреннего содержимого модального окна */
 #modalContent {
   background-color: #fff;
   padding: 20px;
